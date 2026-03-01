@@ -16,7 +16,17 @@ function Movies() {
   const filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(search.toLowerCase())
   )
-  
+  if(filter){
+    filteredMovies.sort((a,b)=>{
+      if(filter === 'title'){
+        return a.title.localeCompare(b.title)
+      } else if(filter === 'release_date'){
+        return b.year - a.year
+      } else if(filter === 'rating'){
+        return b.rating - a.rating  
+      }
+    })
+  }
   return (
     <div>
       <h1>Movies</h1>
