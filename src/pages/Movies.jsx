@@ -12,6 +12,7 @@ function Movies() {
   useEffect(() => {
     searchRef.current.focus()
   }, [])
+
   const filteredMovies = useMemo(() => {
     const result = movies.filter((movie) =>
       movie.title.toLowerCase().includes(search.toLowerCase())
@@ -29,6 +30,7 @@ function Movies() {
     }
     return result
   }, [movies, search, filter])
+  
   return (
     <div>
       <h1>Movies</h1>
