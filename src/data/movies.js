@@ -1,3 +1,26 @@
+import shawshankRedemption from '../assets/images/shawshank-redemption.jpg'
+import theGodfather from '../assets/images/the-godfather.png'
+import darkKnight from '../assets/images/dark-knight.jpg'
+import pulpFiction from '../assets/images/pulp-fiction.jpg'
+import forrestGump from '../assets/images/forrest-gump.jpg'
+import inception from '../assets/images/inception.jpg'
+import fightClub from '../assets/images/fight-club.jpg'
+import theMatrix from '../assets/images/the-matrix.jpg'
+import goodfellas from '../assets/images/goodfellas.png'
+import interstellar from '../assets/images/interstellar.jpg'
+import silenceOfTheLambs from '../assets/images/silence-of-the-lambs.jpg'
+import gladiator from '../assets/images/gladiator.jpg'
+import departed from '../assets/images/departed.jpg'
+import whiplash from '../assets/images/whiplash.jpg'
+import prestige from '../assets/images/prestige.jpg'
+import parasite from '../assets/images/parasite.jpg'
+import djangoUnchained from '../assets/images/django-unchained.jpg'
+import theLionKing from '../assets/images/the-lion-king.jpg'
+import savingPrivateRyan from '../assets/images/saving-private.jpg'
+import backToTheFuture from '../assets/images/back-to-future.jpg'
+import alien from '../assets/images/alien.jpg'
+import theTrumanShow from '../assets/images/the-truman-show.jpg'
+
 const movies = [
   {
     id: 1,
@@ -6,7 +29,7 @@ const movies = [
     rating: 9.3,
     genre: "Drama",
     description: "A banker convicted of uxoricide forms a friendship over a quarter century with a hardened convict, while maintaining his innocence and trying to remain hopeful through simple compassion.",
-    poster: "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: shawshankRedemption
   },
   {
     id: 2,
@@ -15,7 +38,7 @@ const movies = [
     rating: 9.2,
     genre: "Crime",
     description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant youngest son.",
-    poster: "https://m.media-amazon.com/images/M/MV5BYTJkNGQyZDgtZDQ0NC00MDM0LWEzZWQtYzUzZDEwMDljZWNjXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: theGodfather
   },
   {
     id: 3,
@@ -24,7 +47,7 @@ const movies = [
     rating: 9.0,
     genre: "Action",
     description: "When a menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-    poster: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
+    poster: darkKnight
   },
   {
     id: 4,
@@ -33,7 +56,7 @@ const movies = [
     rating: 8.9,
     genre: "Crime",
     description: "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
-    poster: "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: pulpFiction
   },
   {
     id: 5,
@@ -42,7 +65,7 @@ const movies = [
     rating: 8.8,
     genre: "Drama",
     description: "The history of the United States from the 1950s to the '70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart.",
-    poster: "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: forrestGump
   },
   {
     id: 6,
@@ -51,7 +74,7 @@ const movies = [
     rating: 8.8,
     genre: "Sci-Fi",
     description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-    poster: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
+    poster: inception
   },
   {
     id: 7,
@@ -60,7 +83,7 @@ const movies = [
     rating: 8.8,
     genre: "Drama",
     description: "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
-    poster: "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_SX300.jpg"
+    poster: fightClub
   },
   {
     id: 8,
@@ -69,7 +92,7 @@ const movies = [
     rating: 8.7,
     genre: "Sci-Fi",
     description: "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth -- the life he knows is the elaborate deception of an evil cyber-intelligence.",
-    poster: "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDL2XkEyXkFqcGc@._V1_SX300.jpg"
+    poster: theMatrix
   },
   {
     id: 9,
@@ -78,7 +101,7 @@ const movies = [
     rating: 8.7,
     genre: "Crime",
     description: "The story of Henry Hill and his life in the mafia, covering his relationship with his wife Karen and his mob partners Jimmy Conway and Tommy DeVito.",
-    poster: "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: goodfellas
   },
   {
     id: 10,
@@ -87,7 +110,7 @@ const movies = [
     rating: 8.7,
     genre: "Sci-Fi",
     description: "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot is tasked with piloting a spacecraft, along with a team of researchers, to find a new planet for humans.",
-    poster: "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_SX300.jpg"
+    poster: interstellar
   },
   {
     id: 11,
@@ -96,7 +119,7 @@ const movies = [
     rating: 8.6,
     genre: "Thriller",
     description: "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
-    poster: "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: silenceOfTheLambs
   },
   {
     id: 12,
@@ -105,7 +128,7 @@ const movies = [
     rating: 8.5,
     genre: "Action",
     description: "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
-    poster: "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: gladiator
   },
   {
     id: 13,
@@ -114,7 +137,7 @@ const movies = [
     rating: 8.5,
     genre: "Crime",
     description: "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
-    poster: "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_SX300.jpg"
+    poster: departed
   },
   {
     id: 14,
@@ -123,7 +146,7 @@ const movies = [
     rating: 8.5,
     genre: "Drama",
     description: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.",
-    poster: "https://m.media-amazon.com/images/M/MV5BOTA5NDZlZGUtMjAxOS00YTRhLThmZDUtZDkzYWZhZmI1YzU3XkEyXkFqcGc@._V1_SX300.jpg"
+    poster: whiplash
   },
   {
     id: 15,
@@ -132,7 +155,7 @@ const movies = [
     rating: 8.5,
     genre: "Thriller",
     description: "After a tragic accident, two stage magicians in 1890s London engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
-    poster: "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_SX300.jpg"
+    poster: prestige
   },
   {
     id: 16,
@@ -141,7 +164,7 @@ const movies = [
     rating: 8.5,
     genre: "Thriller",
     description: "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
-    poster: "https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: parasite
   },
   {
     id: 17,
@@ -150,7 +173,7 @@ const movies = [
     rating: 8.5,
     genre: "Western",
     description: "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in Mississippi.",
-    poster: "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX300.jpg"
+    poster: djangoUnchained
   },
   {
     id: 18,
@@ -159,7 +182,7 @@ const movies = [
     rating: 8.5,
     genre: "Animation",
     description: "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
-    poster: "https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGc@._V1_SX300.jpg"
+    poster: theLionKing
   },
   {
     id: 19,
@@ -168,7 +191,7 @@ const movies = [
     rating: 8.6,
     genre: "War",
     description: "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
-    poster: "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWQtZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGc@._V1_SX300.jpg"
+    poster: savingPrivateRyan
   },
   {
     id: 20,
@@ -177,7 +200,7 @@ const movies = [
     rating: 8.5,
     genre: "Sci-Fi",
     description: "Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.",
-    poster: "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: backToTheFuture
   },
   {
     id: 21,
@@ -186,7 +209,7 @@ const movies = [
     rating: 8.5,
     genre: "Horror",
     description: "After investigating a mysterious transmission of unknown origin, the crew of a commercial spacecraft encounters a deadly lifeform.",
-    poster: "https://m.media-amazon.com/images/M/MV5BOGQzZTBjMjQtOTVmMS00NGE5LWEyYmMtOGQ1ZGZjNmRkYjFhXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: alien
   },
   {
     id: 22,
@@ -195,7 +218,7 @@ const movies = [
     rating: 8.2,
     genre: "Comedy",
     description: "An insurance salesman discovers his whole life is actually a reality TV show.",
-    poster: "https://m.media-amazon.com/images/M/MV5BNjUxYjMzMDQtNzYyOS00OTY2LWE2NTctMTk3ZjIxMGNmMDQwXkEyXkFqcGc@._V1_SX300.jpg"
+    poster: theTrumanShow
   }
 ]
 

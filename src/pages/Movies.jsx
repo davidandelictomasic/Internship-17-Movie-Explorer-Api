@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
 import useFetchMovies from '../hooks/useFetchMovies'
+import MovieCard from '../components/MovieCard'
+import '../styles/Movies.css'
 
 function Movies() {
   const { movies, loading, error } = useFetchMovies()
@@ -12,15 +13,11 @@ function Movies() {
       {!loading && !error && movies.length === 0 && (
         <p>No movies found.</p>
       )}
-      <ul>
+      <div className="grid">
         {movies.map((movie) => (
-          <li key={movie.id}>
-            <Link to={`/movies/${movie.id}`}>
-              {movie.title} ({movie.year}) — {movie.rating}
-            </Link>
-          </li>
+          <MovieCard key={movie.id} movie={movie} />
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
