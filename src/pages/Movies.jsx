@@ -7,15 +7,25 @@ function Movies({ favorites }) {
   const { movies, loading, error } = useFetchMovies()
   const [filter,setFilter] = useState('')
   const [search, setSearch] = useState('')
+  const [delayedSearch, setDebouncedSearch] = useState('')
   const searchRef = useRef(null)
+  const setTimeoutSearch = useRef(null)
 
   useEffect(() => {
     searchRef.current.focus()
   }, [])
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+    clearTimeout(setTimeoutSearch.current)
+    setTimeoutSearch.current = setTimeout(() => {
+      setDebouncedSearch(e.target.value)
+    }, 300)
+  }
+
   const filteredMovies = useMemo(() => {
     const result = movies.filter((movie) =>
-      movie.title.toLowerCase().includes(search.toLowerCase())
+      movie.title.toLowerCase().includes(delayedSearch.toLowerCase())
     )
     if (filter) {
       result.sort((a, b) => {
@@ -29,7 +39,7 @@ function Movies({ favorites }) {
       })
     }
     return result
-  }, [movies, search, filter])
+  }, [movies, delayedSearch, filter])
   
   return (
     <div>
@@ -40,7 +50,7 @@ function Movies({ favorites }) {
           type="text"
           placeholder="Search movies..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={handleSearch}
         />
         <select value={filter} onChange={(e)=>setFilter(e.target.value)}>
           <option value="">Sort by</option>
