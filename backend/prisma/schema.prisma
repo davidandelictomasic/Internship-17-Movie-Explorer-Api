@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Movie {
+  id        Int        @id @default(autoincrement())
+  title     String
+  year      Int
+  rating    Float
+  plot      String
+  posterUrl String
+  genres    Genre[]    @relation("MovieGenres")
+  favorite  Favorite?
+}
+
+model Genre {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  movies Movie[] @relation("MovieGenres")
+}
+
+model Favorite {
+  id      Int   @id @default(autoincrement())
+  movie   Movie @relation(fields: [movieId], references: [id])
+  movieId Int   @unique
+}
