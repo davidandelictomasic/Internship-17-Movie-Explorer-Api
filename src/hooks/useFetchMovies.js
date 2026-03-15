@@ -1,24 +1,27 @@
 import { useState, useEffect } from 'react'
 
-let cachedMovies = null
-
 const API_URL = 'http://localhost:3000'
 
-function useFetchMovies() {
-  const [movies, setMovies] = useState(cachedMovies || [])
-  const [loading, setLoading] = useState(!cachedMovies)
+function useFetchMovies(search = '', sort = '', genre = '') {
+  const [movies, setMovies] = useState([])
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if(cachedMovies) return
+    setLoading(true)
+    setError(null)
 
-    fetch(`${API_URL}/movies`)
+    const params = new URLSearchParams()
+    if (search) params.append('search', search)
+    if (sort) params.append('sort', sort)
+    if (genre) params.append('genre', genre)
+
+    fetch(`${API_URL}/movies?${params}`)
       .then((res) => {
         if (!res.ok) throw new Error('Failed to fetch movies')
         return res.json()
       })
       .then((data) => {
-        cachedMovies = data
         setMovies(data)
         setLoading(false)
       })
@@ -26,7 +29,7 @@ function useFetchMovies() {
         setError(err.message)
         setLoading(false)
       })
-  }, [])
+  }, [search, sort, genre])
 
   return { movies, loading, error }
 }
