@@ -4,7 +4,7 @@ import useFetchGenres from '../hooks/useFetchGenres'
 import MovieCard from '../components/MovieCard'
 import '../styles/Movies.css'
 
-function Movies({ favorites }) {
+function Movies({ isFavorite }) {
   const [sort, setSort] = useState('')
   const [genre, setGenre] = useState('')
   const [search, setSearch] = useState('')
@@ -58,7 +58,7 @@ function Movies({ favorites }) {
       )}
       <div className="grid">
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} isFavorite={favorites.includes(movie.id)} />
+          <MovieCard key={movie.id} movie={movie} isFavorite={isFavorite(movie.id)} />
         ))}
       </div>
     </div>

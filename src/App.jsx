@@ -5,23 +5,17 @@ import Movies from './pages/Movies'
 import MovieDetail from './pages/MovieDetail'
 import Favorites from './pages/Favorites'
 import NotFound from './pages/NotFound'
-import useLocalStorage from './hooks/useLocalStorage'
+import useFavorites from './hooks/useFavorites'
 
 function App() {
-  const [favorites, setFavorites] = useLocalStorage('favorites', [])
-
-  const toggleFavorite = (id) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((fId) => fId !== id) : [...prev, id]
-    )
-  }
+  const { favorites, toggleFavorite, isFavorite } = useFavorites()
 
   return (
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies favorites={favorites} />} />
-        <Route path="/movies/:id" element={<MovieDetail favorites={favorites} toggleFavorite={toggleFavorite} />} />
+        <Route path="/movies" element={<Movies isFavorite={isFavorite} />} />
+        <Route path="/movies/:id" element={<MovieDetail isFavorite={isFavorite} toggleFavorite={toggleFavorite} />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} toggleFavorite={toggleFavorite} />} />
         <Route path="*" element={<NotFound />} />
       </Route>

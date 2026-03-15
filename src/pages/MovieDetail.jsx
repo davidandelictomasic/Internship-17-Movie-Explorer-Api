@@ -2,11 +2,11 @@ import { useParams, useNavigate } from 'react-router-dom'
 import useFetchMovie from '../hooks/useFetchMovie'
 import '../styles/MovieDetail.css'
 
-function MovieDetail({ favorites, toggleFavorite }) {
+function MovieDetail({ isFavorite, toggleFavorite }) {
   const { id } = useParams()
   const navigate = useNavigate()
   const { movie, loading } = useFetchMovie(id)
-  const isFavorite = movie && favorites.includes(movie.id)
+  const favorite = movie && isFavorite(movie.id)
 
   if (loading) return <p>Loading...</p>
 
@@ -22,7 +22,7 @@ function MovieDetail({ favorites, toggleFavorite }) {
             </p>
             <p className="detail-description">{movie.plot}</p>
             <button onClick={() => toggleFavorite(movie.id)}>
-              {isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+              {favorite ? 'Remove from favorites' : 'Add to favorites'}
             </button>
             <button onClick={() => navigate(-1)}>Back</button>
           </div>
