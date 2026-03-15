@@ -1,16 +1,61 @@
-# React + Vite
+# Movie Explorer API
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack movie explorer app with a React frontend and NestJS REST API backend, using Prisma and PostgreSQL.
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js
+- Docker Desktop
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. Start the database
 
-## Expanding the ESLint configuration
+```bash
+docker compose up -d
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 2. Backend
+
+```bash
+cd backend
+npm install
+npx prisma migrate dev --name init
+npx prisma generate
+npx tsx prisma/seed.ts
+npm run start:dev
+```
+
+Backend runs on `http://localhost:3000`
+
+Swagger docs: `http://localhost:3000/api`
+
+### 3. Frontend
+
+```bash
+npm install
+npm run dev
+```
+
+Frontend runs on `http://localhost:5173`
+
+## API Endpoints
+
+### Movies
+- `GET /movies` — list all movies (supports `?search=`, `?sort=`, `?genre=`)
+- `GET /movies/:id` — get a single movie
+- `POST /movies` — create a movie
+- `PATCH /movies/:id` — update a movie
+- `DELETE /movies/:id` — delete a movie
+
+### Genres
+- `GET /genres` — list all genres
+- `GET /genres/:id` — get a single genre
+- `POST /genres` — create a genre
+- `PATCH /genres/:id` — update a genre
+- `DELETE /genres/:id` — delete a genre
+
+### Favorites
+- `GET /favorites` — list all favorites
+- `POST /favorites` — add a favorite
+- `DELETE /favorites/:id` — remove a favorite
