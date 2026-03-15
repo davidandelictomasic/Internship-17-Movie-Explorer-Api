@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 const API_URL = 'http://localhost:3000'
 
-function useFetchMovies(search = '', sort = '', genre = '') {
+function useFetchMovies(search = '', sort = '', genre = '', order = '') {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
@@ -15,6 +15,7 @@ function useFetchMovies(search = '', sort = '', genre = '') {
     if (search) params.append('search', search)
     if (sort) params.append('sort', sort)
     if (genre) params.append('genre', genre)
+    if (order) params.append('order', order)
 
     fetch(`${API_URL}/movies?${params}`)
       .then((res) => {
@@ -29,7 +30,7 @@ function useFetchMovies(search = '', sort = '', genre = '') {
         setError(err.message)
         setLoading(false)
       })
-  }, [search, sort, genre])
+  }, [search, sort, genre, order])
 
   return { movies, loading, error }
 }

@@ -6,13 +6,14 @@ import '../styles/Movies.css'
 
 function Movies({ isFavorite }) {
   const [sort, setSort] = useState('')
+  const [order, setOrder] = useState('')
   const [genre, setGenre] = useState('')
   const [search, setSearch] = useState('')
   const [delayedSearch, setDebouncedSearch] = useState('')
   const searchRef = useRef(null)
   const setTimeoutSearch = useRef(null)
 
-  const { movies, loading, error } = useFetchMovies(delayedSearch, sort, genre)
+  const { movies, loading, error } = useFetchMovies(delayedSearch, sort, genre, order)
   const { genres } = useFetchGenres()
 
   useEffect(() => {
@@ -49,6 +50,10 @@ function Movies({ isFavorite }) {
           <option value="title">Title</option>
           <option value="release_date">Release Date</option>
           <option value="rating">Rating</option>
+        </select>
+        <select value={order} onChange={(e) => setOrder(e.target.value)}>
+          <option value="asc">Ascending</option>
+          <option value="desc">Descending</option>
         </select>
       </div>
       {loading && <p>Loading movies...</p>}

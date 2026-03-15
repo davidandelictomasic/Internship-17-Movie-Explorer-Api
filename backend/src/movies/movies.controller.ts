@@ -24,8 +24,9 @@ export class MoviesController {
     @Query('search') search?: string,
     @Query('sort') sort?: string,
     @Query('genre') genre?: string,
+    @Query('order') order?: string,
   ) {
-    return this.moviesService.findAll(search, sort, genre);
+    return this.moviesService.findAll(search, sort, genre, order);
   }
 
   @Get(':id')

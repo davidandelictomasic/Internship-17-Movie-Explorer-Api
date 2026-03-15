@@ -7,7 +7,9 @@ import { UpdateMovieDto } from './dto/update-movie.dto';
 export class MoviesService {
   constructor(private readonly prisma: PrismaService) {}
 
-  findAll(search?: string, sort?: string, genre?: string) {
+  findAll(search?: string, sort?: string, genre?: string, order?: string) {
+    const direction = order === 'asc' ? 'asc' : 'desc';
+
     return this.prisma.movie.findMany({
       where: {
         ...(search && {
@@ -18,11 +20,11 @@ export class MoviesService {
         }),
       },
       orderBy: sort === 'title'
-        ? { title: 'asc' }
+        ? { title: direction }
         : sort === 'rating'
-          ? { rating: 'desc' }
+          ? { rating: direction }
           : sort === 'release_date'
-            ? { year: 'desc' }
+            ? { year: direction }
             : undefined,
       include: { genres: true },
     });
