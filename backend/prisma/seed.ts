@@ -67,7 +67,7 @@ async function main() {
       year: 1999,
       rating: 8.7,
       plot: "A computer hacker learns about the true nature of his reality and his role in the war against its controllers.",
-      posterUrl: "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNlYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+      posterUrl: "https://static.wikia.nocookie.net/matrix/images/5/56/The_Matrix_digital_release_cover.jpg/revision/latest/scale-to-width-down/1200?cb=20210908111245",
       genres: { connect: [{ id: action.id }, { id: sciFi.id }] },
     },
     {
@@ -75,7 +75,7 @@ async function main() {
       year: 1994,
       rating: 8.8,
       plot: "The presidencies of Kennedy and Johnson, the Vietnam War, and other events unfold from the perspective of an Alabama man with an IQ of 75.",
-      posterUrl: "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNjU1MjGYXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+      posterUrl: "https://cdn.kinocheck.com/i/ogicothwme.jpg",
       genres: { connect: [{ id: drama.id }, { id: romance.id }] },
     },
     {
@@ -115,7 +115,7 @@ async function main() {
       year: 1995,
       rating: 8.3,
       plot: "A cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boy's bedroom.",
-      posterUrl: "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtMDQzZjBhMGI3NjE5XkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_SX300.jpg",
+      posterUrl: "https://cdn.shopify.com/s/files/1/0051/8845/2401/products/00719ToyStory_Blackstone__Rounded_1200x630.png?v=1625840218",
       genres: { connect: [{ id: animation.id }, { id: comedy.id }, { id: adventure.id }] },
     },
     {
@@ -171,7 +171,7 @@ async function main() {
       year: 2007,
       rating: 7.6,
       plot: "Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry.",
-      posterUrl: "https://m.media-amazon.com/images/M/MV5BY2VkMDg4ZTYtN2M3Yy00NWZiLWE2ODEtZjU5MjZkYWNkZWE2XkEyXkFqcGdeQXVyODY5Njk4Njk@._V1_SX300.jpg",
+      posterUrl: "https://m.media-amazon.com/images/M/MV5BNjk0MzdlZGEtNTRkOC00ZDRiLWJkYjAtMzUzYTRiNzk1YTViXkEyXkFqcGc@._V1_.jpg",
       genres: { connect: [{ id: comedy.id }] },
     },
     {

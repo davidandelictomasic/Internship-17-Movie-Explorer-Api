@@ -5,7 +5,7 @@ function MovieCard({ movie, isFavorite }) {
   return (
     <Link to={`/movies/${movie.id}`} className={`card ${isFavorite ? 'favorite' : ''}`}>
       <img
-        src={movie.poster}
+        src={movie.posterUrl}
         alt={movie.title}
         className="poster"
       />

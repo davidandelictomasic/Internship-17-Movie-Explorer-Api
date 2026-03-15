@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import moviesData from '../data/movies'
 
 let cachedMovies = null
+
+const API_URL = 'http://localhost:3000'
 
 function useFetchMovies() {
   const [movies, setMovies] = useState(cachedMovies || [])
@@ -9,20 +10,22 @@ function useFetchMovies() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (cachedMovies) return
+    if(cachedMovies) return
 
-    const timeout = setTimeout(() => {
-      try {
-        cachedMovies = moviesData
-        setMovies(moviesData)
+    fetch(`${API_URL}/movies`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch movies')
+        return res.json()
+      })
+      .then((data) => {
+        cachedMovies = data
+        setMovies(data)
         setLoading(false)
-      } catch (err) {
-        setError("Something went wrong, try again later.")
+      })
+      .catch((err) => {
+        setError(err.message)
         setLoading(false)
-      }
-    }, 500)
-
-    return () => clearTimeout(timeout)
+      })
   }, [])
 
   return { movies, loading, error }
