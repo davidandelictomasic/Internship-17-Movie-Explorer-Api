@@ -6,6 +6,7 @@ import {
   Delete,
   Body,
   Param,
+  Query,
   ParseIntPipe,
 } from '@nestjs/common';
 import { MoviesService } from './movies.service';
@@ -19,8 +20,12 @@ export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 
   @Get()
-  findAll() {
-    return this.moviesService.findAll();
+  findAll(
+    @Query('search') search?: string,
+    @Query('sort') sort?: string,
+    @Query('genre') genre?: string,
+  ) {
+    return this.moviesService.findAll(search, sort, genre);
   }
 
   @Get(':id')
