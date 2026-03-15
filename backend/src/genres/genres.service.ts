@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateGenreDto } from './dto/create-genre.dto';
+import { UpdateGenreDto } from './dto/update-genre.dto';
 
 @Injectable()
 export class GenresService {
@@ -24,6 +25,24 @@ export class GenresService {
           ? { connect: dto.movieIds.map((id) => ({ id })) }
           : undefined,
       },
+    });
+  }
+
+  update(id: number, dto: UpdateGenreDto) {
+    return this.prisma.genre.update({
+      where: { id },
+      data: {
+        name: dto.name,
+        movies: dto.movieIds
+          ? { set: dto.movieIds.map((id) => ({ id })) }
+          : undefined,
+      },
+    });
+  }
+
+  remove(id: number) {
+    return this.prisma.genre.delete({
+      where: { id },
     });
   }
 }
