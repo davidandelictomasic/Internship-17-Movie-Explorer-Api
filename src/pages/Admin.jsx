@@ -1,21 +1,14 @@
-import { useState } from 'react'
 import useFetchMovies from '../hooks/useFetchMovies'
 import useFetchGenres from '../hooks/useFetchGenres'
+import useMovieForm from '../hooks/useMovieForm'
 import '../styles/Admin.css'
-
-const emptyForm = { title: '', year: '', rating: '', plot: '', posterUrl: '', genreIds: [] }
 
 function Admin() {
   const { movies, loading, error } = useFetchMovies()
   const { genres } = useFetchGenres()
-  const [form, setForm] = useState(emptyForm)
-  const [editingId, setEditingId] = useState(null)
+  const { form, handleChange, handleGenreChange, handleSubmit, handleDelete } = useMovieForm()
 
-  const handleChange = () => {}
-  const handleGenreChange = () => {}
-  const handleSubmit = (e) => { e.preventDefault() }
   const handleEdit = () => {}
-  const handleDelete = () => {}
   const handleCancel = () => {}
 
   return (
@@ -36,7 +29,7 @@ function Admin() {
           ))}
         </select>
         <div className="form-buttons">
-          <button type="submit">{editingId ? 'Update' : 'Create'}</button>
+          <button type="submit">Create</button>
           <button type="button" onClick={handleCancel}>Cancel</button>
         </div>
       </form>
