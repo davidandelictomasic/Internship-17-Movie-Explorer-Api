@@ -5,6 +5,7 @@ const emptyForm = { title: '', year: '', rating: '', plot: '', posterUrl: '', ge
 
 function useMovieForm() {
   const [form, setForm] = useState(emptyForm)
+  const [editingId, setEditingId] = useState(null)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -23,14 +24,18 @@ function useMovieForm() {
       rating: Number(form.rating),
     }
 
-    fetch(`${API_URL}/movies`, {
-      method: 'POST',
+    const url = editingId ? `${API_URL}/movies/${editingId}` : `${API_URL}/movies`
+    const method = editingId ? 'PATCH' : 'POST'
+
+    fetch(url, {
+      method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(body),
     })
       .then((res) => {
-        if (!res.ok) throw new Error('Failed to create movie')
+        if (!res.ok) throw new Error('Failed to save movie')
         setForm(emptyForm)
+        setEditingId(null)
         window.location.reload()
       })
       .catch((err) => alert(err.message))
@@ -46,7 +51,24 @@ function useMovieForm() {
       .catch((err) => alert(err.message))
   }
 
-  return { form, handleChange, handleGenreChange, handleSubmit, handleDelete }
+  const handleEdit = (movie) => {
+    setForm({
+      title: movie.title,
+      year: movie.year,
+      rating: movie.rating,
+      plot: movie.plot,
+      posterUrl: movie.posterUrl,
+      genreIds: movie.genres.map((g) => g.id),
+    })
+    setEditingId(movie.id)
+  }
+
+  const handleCancel = () => {
+    setForm(emptyForm)
+    setEditingId(null)
+  }
+
+  return { form, editingId, handleChange, handleGenreChange, handleSubmit, handleEdit, handleDelete, handleCancel }
 }
 
 export default useMovieForm

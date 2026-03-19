@@ -6,10 +6,7 @@ import '../styles/Admin.css'
 function Admin() {
   const { movies, loading, error } = useFetchMovies()
   const { genres } = useFetchGenres()
-  const { form, handleChange, handleGenreChange, handleSubmit, handleDelete } = useMovieForm()
-
-  const handleEdit = () => {}
-  const handleCancel = () => {}
+  const { form, editingId, handleChange, handleGenreChange, handleSubmit, handleEdit, handleDelete, handleCancel } = useMovieForm()
 
   return (
     <div>
@@ -29,7 +26,7 @@ function Admin() {
           ))}
         </select>
         <div className="form-buttons">
-          <button type="submit">Create</button>
+          <button type="submit">{editingId ? 'Update' : 'Create'}</button>
           <button type="button" onClick={handleCancel}>Cancel</button>
         </div>
       </form>
