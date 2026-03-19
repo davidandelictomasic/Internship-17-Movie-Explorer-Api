@@ -6,6 +6,7 @@ import MovieDetail from './pages/MovieDetail'
 import Favorites from './pages/Favorites'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Admin from './pages/Admin'
 import NotFound from './pages/NotFound'
 import useFavorites from './hooks/useFavorites'
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/favorites" element={<Favorites favorites={favorites} toggleFavorite={toggleFavorite} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

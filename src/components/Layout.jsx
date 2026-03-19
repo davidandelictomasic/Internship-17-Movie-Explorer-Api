@@ -9,6 +9,7 @@ function Layout() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/movies">Movies</NavLink>
           <NavLink to="/favorites">Favorites</NavLink>
+          <NavLink to="/admin">Admin</NavLink>
         </nav>
       </header>
       <main>
