@@ -1,0 +1,30 @@
+.auth-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.auth-form input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-form button {
+  background-color: #646cff;
+  color: white;
+  border: none;
+  padding: 0.7em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background-color: #535bf2;
+}
