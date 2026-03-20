@@ -1,18 +1,14 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useRegister from '../hooks/useRegister'
 import '../styles/Auth.css'
 
 function Register() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+  const { email, setEmail, password, setPassword, error, handleSubmit } = useRegister()
 
   return (
     <div className="auth-container">
       <h1>Register</h1>
+      {error && <p className="auth-error">{error}</p>}
       <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="email"
