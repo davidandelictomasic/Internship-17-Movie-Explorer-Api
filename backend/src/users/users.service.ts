@@ -2,6 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
@@ -20,10 +21,12 @@ export class UsersService {
       throw new BadRequestException('Email already in use');
     }
 
+    const hashedPassword = await bcrypt.hash(dto.password, 10);
+
     const user = await this.prisma.user.create({
       data: {
         email: dto.email,
-        password: dto.password,
+        password: hashedPassword,
       },
     });
 
@@ -39,7 +42,8 @@ export class UsersService {
       throw new BadRequestException('Invalid credentials');
     }
 
-    if (dto.password !== user.password) {
+    const passwordMatch = await bcrypt.compare(dto.password, user.password);
+    if (!passwordMatch) {
       throw new BadRequestException('Invalid credentials');
     }
 
