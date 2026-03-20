@@ -1,4 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -6,7 +7,10 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly jwtService: JwtService,
+  ) {}
 
   async register(dto: CreateUserDto) {
     if (!dto.email || !dto.password) {
@@ -47,7 +51,9 @@ export class UsersService {
       throw new BadRequestException('Invalid credentials');
     }
 
-    return { id: user.id, email: user.email, role: user.role };
+    const token = this.jwtService.sign({ sub: user.id, email: user.email, role: user.role });
+
+    return { token, user: { id: user.id, email: user.email, role: user.role } };
   }
 
   findAll() {
