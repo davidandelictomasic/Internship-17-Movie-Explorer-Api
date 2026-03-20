@@ -1,18 +1,14 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useLogin from '../hooks/useLogin'
 import '../styles/Auth.css'
 
 function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+  const { email, setEmail, password, setPassword, error, handleSubmit } = useLogin()
 
   return (
     <div className="auth-container">
       <h1>Login</h1>
+      {error && <p className="auth-error">{error}</p>}
       <form onSubmit={handleSubmit} className="auth-form">
         <input
           type="email"
