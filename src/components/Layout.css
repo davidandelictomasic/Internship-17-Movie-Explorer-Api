@@ -15,17 +15,19 @@ header nav a.active {
 }
 
 .nav-logout {
-  background: none;
+  background-color: #e74c3c;
+  color: white;
   border: none;
-  color: #aaa;
   cursor: pointer;
   font-size: inherit;
   font-family: inherit;
-  padding: 0;
+  padding: 4px 12px;
+  border-radius: 4px;
+  margin-left: auto;
 }
 
 .nav-logout:hover {
-  color: #fff;
+  background-color: #c0392b;
 }
 
 main {
