@@ -6,8 +6,22 @@ function useFavorites() {
   const [favorites, setFavorites] = useState([])
   const [loading, setLoading] = useState(true)
 
+  const getHeaders = () => {
+    const token = localStorage.getItem('token')
+    return {
+      'Content-Type': 'application/json',
+      ...(token && { Authorization: `Bearer ${token}` }),
+    }
+  }
+
   const fetchFavorites = () => {
-    fetch(`${API_URL}/favorites`)
+    const token = localStorage.getItem('token')
+    if (!token) {
+      setFavorites([])
+      setLoading(false)
+      return
+    }
+    fetch(`${API_URL}/favorites`, { headers: getHeaders() })
       .then((res) => res.json())
       .then((data) => {
         setFavorites(data)
@@ -23,12 +37,12 @@ function useFavorites() {
   const toggleFavorite = (movieId) => {
     const existing = favorites.find((f) => f.movieId === movieId)
     if (existing) {
-      fetch(`${API_URL}/favorites/${existing.id}`, { method: 'DELETE' })
+      fetch(`${API_URL}/favorites/${existing.id}`, { method: 'DELETE', headers: getHeaders() })
         .then(() => fetchFavorites())
     } else {
       fetch(`${API_URL}/favorites`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: getHeaders(),
         body: JSON.stringify({ movieId }),
       }).then(() => fetchFavorites())
     }
