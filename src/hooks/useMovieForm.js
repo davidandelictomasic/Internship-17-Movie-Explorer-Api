@@ -3,6 +3,14 @@ import { useState } from 'react'
 const API_URL = 'http://localhost:3000'
 const emptyForm = { title: '', year: '', rating: '', plot: '', posterUrl: '', genreIds: [] }
 
+const getHeaders = () => {
+  const token = localStorage.getItem('token')
+  return {
+    'Content-Type': 'application/json',
+    ...(token && { Authorization: `Bearer ${token}` }),
+  }
+}
+
 function useMovieForm() {
   const [form, setForm] = useState(emptyForm)
   const [editingId, setEditingId] = useState(null)
@@ -29,7 +37,7 @@ function useMovieForm() {
 
     fetch(url, {
       method,
-      headers: { 'Content-Type': 'application/json' },
+      headers: getHeaders(),
       body: JSON.stringify(body),
     })
       .then((res) => {
@@ -43,7 +51,7 @@ function useMovieForm() {
 
   const handleDelete = (id) => {
     if (!confirm('Are you sure you want to delete this movie?')) return
-    fetch(`${API_URL}/movies/${id}`, { method: 'DELETE' })
+    fetch(`${API_URL}/movies/${id}`, { method: 'DELETE', headers: getHeaders() })
       .then((res) => {
         if (!res.ok) throw new Error('Failed to delete movie')
         window.location.reload()
