@@ -17,6 +17,19 @@ export class UsersService {
       throw new BadRequestException('Email and password are required');
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(dto.email)) {
+      throw new BadRequestException('Invalid email format');
+    }
+
+    if (dto.password.length < 6) {
+      throw new BadRequestException('Password must be at least 6 characters');
+    }
+
+    if (!/\d/.test(dto.password)) {
+      throw new BadRequestException('Password must contain at least one number');
+    }
+
     const existingUser = await this.prisma.user.findUnique({
       where: { email: dto.email },
     });
@@ -38,6 +51,10 @@ export class UsersService {
   }
 
   async login(dto: CreateUserDto) {
+    if (!dto.email || !dto.password) {
+      throw new BadRequestException('Email and password are required');
+    }
+
     const user = await this.prisma.user.findUnique({
       where: { email: dto.email },
     });

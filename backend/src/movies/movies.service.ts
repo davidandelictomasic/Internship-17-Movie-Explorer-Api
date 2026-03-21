@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateMovieDto } from './dto/create-movie.dto';
 import { UpdateMovieDto } from './dto/update-movie.dto';
@@ -30,14 +30,30 @@ export class MoviesService {
     });
   }
 
-  findOne(id: number) {
-    return this.prisma.movie.findUnique({
+  async findOne(id: number) {
+    const movie = await this.prisma.movie.findUnique({
       where: { id },
       include: { genres: true },
     });
+
+    if (!movie) {
+      throw new NotFoundException('Movie not found');
+    }
+
+    return movie;
   }
 
   create(dto: CreateMovieDto) {
+    if (!dto.title) {
+      throw new BadRequestException('Title is required');
+    }
+    if (!dto.year || isNaN(dto.year)) {
+      throw new BadRequestException('Year must be a valid number');
+    }
+    if (dto.rating < 0 || dto.rating > 10) {
+      throw new BadRequestException('Rating must be between 0 and 10');
+    }
+
     return this.prisma.movie.create({
       data: {
         title: dto.title,
