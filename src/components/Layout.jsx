@@ -1,14 +1,13 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 import './Layout.css'
 
 function Layout() {
   const { isLoggedIn, isAdmin, logout } = useAuth()
-  const navigate = useNavigate()
 
   const handleLogout = () => {
     logout()
-    navigate('/login')
+    window.location.href = '/login'
   }
 
   return (

@@ -14,6 +14,7 @@ const getHeaders = () => {
 function useMovieForm() {
   const [form, setForm] = useState(emptyForm)
   const [editingId, setEditingId] = useState(null)
+  const [showForm, setShowForm] = useState(false)
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -44,6 +45,7 @@ function useMovieForm() {
         if (!res.ok) throw new Error('Failed to save movie')
         setForm(emptyForm)
         setEditingId(null)
+        setShowForm(false)
         window.location.reload()
       })
       .catch((err) => alert(err.message))
@@ -60,6 +62,7 @@ function useMovieForm() {
   }
 
   const handleEdit = (movie) => {
+    setShowForm(true)
     setForm({
       title: movie.title,
       year: movie.year,
@@ -74,9 +77,10 @@ function useMovieForm() {
   const handleCancel = () => {
     setForm(emptyForm)
     setEditingId(null)
+    setShowForm(false)
   }
 
-  return { form, editingId, handleChange, handleGenreChange, handleSubmit, handleEdit, handleDelete, handleCancel }
+  return { form, editingId, showForm, setShowForm, handleChange, handleGenreChange, handleSubmit, handleEdit, handleDelete, handleCancel }
 }
 
 export default useMovieForm

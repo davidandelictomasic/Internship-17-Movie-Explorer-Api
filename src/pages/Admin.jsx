@@ -6,7 +6,7 @@ import '../styles/Admin.css'
 function Admin() {
   const { movies, loading, error } = useFetchMovies()
   const { genres } = useFetchGenres()
-  const { form, editingId, handleChange, handleGenreChange, handleSubmit, handleEdit, handleDelete, handleCancel } = useMovieForm()
+  const { form, editingId, showForm, setShowForm, handleChange, handleGenreChange, handleSubmit, handleEdit, handleDelete, handleCancel } = useMovieForm()
 
   return (
     <div>
@@ -14,22 +14,28 @@ function Admin() {
         <h1>Admin - Manage Movies</h1>
       </div>
 
-      <form className="admin-form" onSubmit={handleSubmit}>
-        <input name="title" placeholder="Title" value={form.title} onChange={handleChange} required />
-        <input name="year" type="number" placeholder="Year" value={form.year} onChange={handleChange} required />
-        <input name="rating" type="number" step="0.1" placeholder="Rating" value={form.rating} onChange={handleChange} required />
-        <input name="posterUrl" placeholder="Poster URL" value={form.posterUrl} onChange={handleChange} />
-        <textarea name="plot" placeholder="Plot" value={form.plot} onChange={handleChange} rows={3} />
-        <select multiple value={form.genreIds.map(String)} onChange={handleGenreChange}>
-          {genres.map((g) => (
-            <option key={g.id} value={g.id}>{g.name}</option>
-          ))}
-        </select>
-        <div className="form-buttons">
-          <button type="submit">{editingId ? 'Update' : 'Create'}</button>
-          <button type="button" onClick={handleCancel}>Cancel</button>
-        </div>
-      </form>
+      {!showForm && (
+        <button className="admin-create-btn" onClick={() => setShowForm(true)}>Create New Movie</button>
+      )}
+
+      {showForm && (
+        <form className="admin-form" onSubmit={handleSubmit}>
+          <input name="title" placeholder="Title" value={form.title} onChange={handleChange} required />
+          <input name="year" type="number" placeholder="Year" value={form.year} onChange={handleChange} required />
+          <input name="rating" type="number" step="0.1" placeholder="Rating" value={form.rating} onChange={handleChange} required />
+          <input name="posterUrl" placeholder="Poster URL" value={form.posterUrl} onChange={handleChange} />
+          <textarea name="plot" placeholder="Plot" value={form.plot} onChange={handleChange} rows={3} />
+          <select multiple value={form.genreIds.map(String)} onChange={handleGenreChange}>
+            {genres.map((g) => (
+              <option key={g.id} value={g.id}>{g.name}</option>
+            ))}
+          </select>
+          <div className="form-buttons">
+            <button type="submit">{editingId ? 'Update' : 'Create'}</button>
+            <button type="button" onClick={handleCancel}>Cancel</button>
+          </div>
+        </form>
+      )}
 
       {loading && <p>Loading movies...</p>}
       {error && <p>{error}</p>}
