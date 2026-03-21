@@ -1,15 +1,29 @@
-import { NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import useAuth from '../hooks/useAuth'
 import './Layout.css'
 
 function Layout() {
+  const { isLoggedIn, isAdmin, logout } = useAuth()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
+
   return (
     <>
       <header>
         <nav>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/movies">Movies</NavLink>
-          <NavLink to="/favorites">Favorites</NavLink>
-          <NavLink to="/admin">Admin</NavLink>
+          {isLoggedIn && <NavLink to="/favorites">Favorites</NavLink>}
+          {isAdmin && <NavLink to="/admin">Admin</NavLink>}
+          {isLoggedIn ? (
+            <button onClick={handleLogout} className="nav-logout">Logout</button>
+          ) : (
+            <NavLink to="/login">Login</NavLink>
+          )}
         </nav>
       </header>
       <main>

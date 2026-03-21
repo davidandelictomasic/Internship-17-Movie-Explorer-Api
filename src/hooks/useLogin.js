@@ -1,13 +1,10 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 const API_URL = 'http://localhost:3000'
 
 export default function useLogin() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -27,7 +24,7 @@ export default function useLogin() {
       }
 
       localStorage.setItem('token', data.token)
-      navigate('/')
+      window.location.href = '/'
     } catch (err) {
       setError(err.message)
     }

@@ -14,6 +14,20 @@ header nav a.active {
   font-weight: bold;
 }
 
+.nav-logout {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+}
+
+.nav-logout:hover {
+  color: #fff;
+}
+
 main {
   padding: 0 16px;
 }
